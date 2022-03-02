@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import useAxios from '../hooks/useAxios';
 
-const ButtonFilter = () => {
+const ButtonFilter = ({ fetchData: fetchAPi }) => {
   const {
     fetchData,
     response: { categories },
@@ -25,11 +25,20 @@ const ButtonFilter = () => {
     );
   }
 
+  const clickFilterButton = (e) => {
+    fetchAPi({ params: { category: e.target.value } });
+  };
+
   return (
     <div className="text-center my-5">
       {categories &&
         categories.map((button) => (
-          <button className="bg-blue-400 text-white m-1 pp-1 px-2 rounded-sm hover:bg-blue-500">
+          <button
+            key={button}
+            className="bg-blue-400 text-white m-1 pp-1 px-2 rounded-sm hover:bg-blue-500"
+            onClick={clickFilterButton}
+            value={button}
+          >
             {button}
           </button>
         ))}
