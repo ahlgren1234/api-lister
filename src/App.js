@@ -13,7 +13,7 @@ function App() {
 
   return (
     <div>
-      <Jumbotron />
+      <Jumbotron fetchData={fetchData} />
       <div className="container mx-auto max-w-4xl">
         <ButtonFilter />
         <ListApi response={response} loading={loading} />
